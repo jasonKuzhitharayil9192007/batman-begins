@@ -1,12 +1,18 @@
+// this is my bat man project, hope you like it
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
-var thunder, thunder1,thunder2,thunder3,thunder4;
 
-var engine, world;
-var drops = [];
+var thunder;
+var thunder1;
+var thunder2;
+var thunder3;
+var thunder4;
+
+var engine;
+var world;
 var rand;
-
+var drops = [];
 var maxDrops=100;
 
 var thunderCreatedFrame=0;
@@ -25,22 +31,20 @@ function setup(){
     createCanvas(400,700);
     umbrella = new Umbrella(200,500);
 
-    //creating drops
+    //making the drops
     if(frameCount % 150 === 0){
 
         for(var i=0; i<maxDrops; i++){
             drops.push(new createDrop(random(0,400), random(0,400)));
         }
-
     }
-    
 }
 
 function draw(){
     Engine.update(engine);
     background(0); 
 
-    //creating thunder
+    //making the thunder/ lightning
     rand = Math.round(random(1,4));
     if(frameCount%80===0){
         thunderCreatedFrame=frameCount;
@@ -65,13 +69,12 @@ function draw(){
 
     umbrella.display();
 
-    //displaying rain drops
+    //making the rain drops show
     for(var i = 0; i<maxDrops; i++){
         drops[i].showDrop();
         drops[i].updateY()
         
     }
-
     drawSprites();
 }   
 
